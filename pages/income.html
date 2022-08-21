@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--styleheet link here-->
+    <link rel="stylesheet" href="../assets/css/style.css" rel="stylesheet" type="text/css">
+    <!-- Link to the file hosted on your server, -->
+    <link rel="stylesheet" href="../assets/css/splide.min.css">
+
+    <!--bootstrap css here -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>RoboBuddy</title>
+
+
+
+    <style>
+        .table-sortable th {
+            background: var(--main-color);
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        /* .table-sortable .th-sort-asc::after {
+            content: "\25b4";
+        }
+        
+        .table-sortable .th-sort-desc::after {
+            content: "\25be";
+        } */
+        
+        .table-sortable .th-sort-descr {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--Nav bar start here -->
+    <header>
+        <nav class="navBar">
+            <div class="nav_container">
+                <div class="leftLogo">
+                    <a href="#"><img src="../assets/images/logo_left.png" alt="logo"></a>
+                </div>
+                <div class="logoRight">
+                    <a href="#">
+                        <img src="../assets/images/logo_right.png" alt="logo">
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Nav bar end here -->
+
+
+
+    <!--all content start here-->
+    <div class="row">
+        <div class="col-12 col-md-3 col-lg-3 col-xl-3 left_column">
+
+
+        </div>
+
+
+        <div class="col-12 col-md-9 col-lg-9 col-xl-9 right_column ">
+            <h5 class="first_welcome_text">
+                Income Statement
+            </h5>
+            <hr>
+
+
+            <div class="table_wrpper">
+                <table class="table-sortable table">
+                    <thead class="table-head">
+                        <tr>
+                            <th>
+
+
+                                <div class="arrow_wrapper">
+                                    <span class="head_T">Year</span>
+                                    <div class="arro_img_wrap">
+
+                                        <img src="../assets/images/arr1.png" alt=""><img src="../assets/images/arr2.png" alt="">
+
+                                    </div>
+                                </div>
+
+                            </th>
+                            <th>
+                                <div class="arrow_wrapper">
+                                    <span class="head_T">Revenue</span>
+                                    <div class="arro_img_wrap">
+
+                                        <img src="../assets/images/arr1.png" alt=""><img src="../assets/images/arr2.png" alt="">
+
+                                    </div>
+                                </div>
+
+                            </th>
+                            <th>
+                                <div class="arrow_wrapper">
+                                    <span class="head_T">Gross Margin</span>
+                                    <div class="arro_img_wrap">
+
+                                        <img src="../assets/images/arr1.png" alt=""><img src="../assets/images/arr2.png" alt="">
+
+                                    </div>
+                                </div>
+
+                            </th>
+                            <th>
+                                <div class="arrow_wrapper">
+                                    <span class="head_T">Profit</span>
+                                    <div class="arro_img_wrap">
+
+                                        <img src="../assets/images/arr1.png" alt=""><img src="../assets/images/arr2.png" alt="">
+
+                                    </div>
+                                </div>
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2020</td>
+                            <td>$ 3,000,000 </td>
+                            <td>$ 400,000 </td>
+                            <td>$ 250,000 </td>
+                        </tr>
+                        <tr>
+                            <td>2021</td>
+                            <td>$ 3,090,000 </td>
+                            <td>$ 480,000 </td>
+                            <td>$ 257,500 </td>
+                        </tr>
+                        <tr>
+                            <td>2022</td>
+                            <td>$ 3,862,500 </td>
+                            <td>$ 480,600 </td>
+                            <td>$ 360,500
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <div class="btn_group_next_prev" id="return">
+
+                <a href="../index.html" class="next np01">Return</a>
+            </div>
+
+
+            <div class="clear"></div>
+        </div>
+
+
+
+    </div>
+
+
+    </div>
+    <!--all content end here-->
+
+
+
+    <script>
+        function sortTableByColumn(table, column, asc = true) {
+            const dirModifier = asc ? 1 : -1;
+            const tBody = table.tBodies[0];
+            const rows = Array.from(tBody.querySelectorAll("tr"));
+
+            // Sort each row
+            const sortedRows = rows.sort((a, b) => {
+                const aColText = a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+                const bColText = b.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+
+                return aColText > bColText ? (1 * dirModifier) : (-1 * dirModifier);
+            });
+
+            // Remove all existing TRs from the table
+            while (tBody.firstChild) {
+                tBody.removeChild(tBody.firstChild);
+            }
+
+            // Re-add the newly sorted rows
+            tBody.append(...sortedRows);
+
+            // Remember how the column is currently sorted
+            table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
+            table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-asc", asc);
+            table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-desc", !asc);
+        }
+
+        document.querySelectorAll(".table-sortable th").forEach(headerCell => {
+            headerCell.addEventListener("click", () => {
+                const tableElement = headerCell.parentElement.parentElement.parentElement;
+                const headerIndex = Array.prototype.indexOf.call(headerCell.parentElement.children, headerCell);
+                const currentIsAscending = headerCell.classList.contains("th-sort-asc");
+
+                sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
+            });
+        });
+    </script>
+
+    <!--bootstrap Script here -->
+    <script src="../assets/js/bootstrap.js"></script>
+    <script src="../assets/js/splide.min.js"></script>
+    <!--main script here -->
+    <script src="../assets/js/app.js"></script>
+</body>
+
+</html>

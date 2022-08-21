@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--styleheet link here-->
+    <link rel="stylesheet" href="../assets/css/style.css" rel="stylesheet" type="text/css">
+    <!-- Link to the file hosted on your server, -->
+    <link rel="stylesheet" href="../assets/css/splide.min.css">
+
+    <!--bootstrap css here -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>RoboBuddy</title>
+</head>
+
+<body>
+
+    <!--Nav bar start here -->
+    <header>
+        <nav class="navBar">
+            <div class="nav_container">
+                <div class="leftLogo">
+                    <a href="#"><img src="../assets/images/logo_left.png" alt="logo"></a>
+                </div>
+                <div class="logoRight">
+                    <a href="#">
+                        <img src="../assets/images/logo_right.png" alt="logo">
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Nav bar end here -->
+
+
+
+    <!--all content start here-->
+    <div class="row">
+        <div class="col-12 col-md-3 col-lg-3 col-xl-3 left_column">
+
+
+        </div>
+
+
+        <div class="col-12 col-md-9 col-lg-9 col-xl-9 right_column ">
+            <h5 class="first_welcome_text">
+                Revenue Forecast
+            </h5>
+            <hr>
+
+
+            <div class="container m-auto second_page_wrapper row">
+
+                <div class="col-12 col-md-6 col-lg-6 col-xl-6 unit_and_sales_box row">
+
+                    <div class="col-11 wrapper_input_field">
+                        <div class="wrap_head">
+                            <h4>Revenue Forecast
+                            </h4>
+                        </div>
+
+                        <div class="rav_input_filed">
+
+                            <div class="text_fieled_wrapper">
+                                <span>RoboBuddy Price
+                                </span>
+                                <input type="number" class="text_field form-control" id="price">
+                            </div>
+
+
+
+                            <div class="text_fieled_wrapper">
+                                <span>RoboBuddy Estimated <br> Units Sales
+                                </span>
+                                <input type="number" class="text_field form-control" id="sale">
+                            </div>
+
+
+                            <div class="text_fieled_wrapper">
+                                <span>Strategy
+                                </span>
+
+                                <select name="select" id="selectOption" class="form-control">
+                                    <option value="Cost">Cost</option>
+                                    <option value="innovation">innovation</option>
+                                    <option value="Customer">Costomer</option>
+                                </select>
+                            </div>
+
+
+                            <button id="calculate">Calculate</button>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+                <div class="col-12 col-md-6 col-lg-6 col-xl-6 unit_and_sales_box row">
+
+                    <div class="col-11 wrapper_input_field">
+                        <div class="wrap_head">
+                            <h4>Sales Estimate
+
+                            </h4>
+                        </div>
+
+                        <div class="rav_input_filed">
+
+                            <div class="text_fi">
+                                <span class="price_est003">Sales Estimate 
+
+                                </span>
+                            </div>
+
+
+
+                            <div id="cal_value">
+                                <h2>$ <span id="result">0</span></h2>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+                <div class="col-12 text-right">
+
+
+                    <div class="btn_group_next_prev">
+                        <a href="../index.html" class="prev np01">Previous</a>
+                        <a href="sales.html" class="next np01">Next</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <!--all content end here-->
+
+
+    <script>
+        const price = document.getElementById("price");
+        const sale = document.getElementById('sale');
+        const calBtn = document.getElementById("calculate");
+
+        const res = document.getElementById('result');
+        calBtn.addEventListener("click", () => {
+            const result = parseInt(price.value) + parseInt(sale.value);
+
+            res.innerHTML = result;
+
+
+        })
+    </script>
+
+    <!--main script here -->
+    <script src="../assets/js/app.js"></script>
+    <!--bootstrap Script here -->
+    <script src="../assets/js/bootstrap.js"></script>
+    <script src="../assets/js/splide.min.js"></script>
+
+</body>
+
+</html>
